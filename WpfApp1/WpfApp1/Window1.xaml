@@ -1,0 +1,40 @@
+﻿<Window x:Class="WpfApp1.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="Unos novog pacijenta" Height="425" Width="250" Loaded="Window_Loaded">
+    <Window.Resources>
+        <DataTemplate x:Key="odeljenjeKontrola">
+            <StackPanel Orientation="Horizontal" Margin="3">
+                <TextBlock Text="{Binding Naziv}"/>
+            </StackPanel>
+        </DataTemplate>
+        <DataTemplate x:Key="sobeKontrola">
+            <StackPanel Orientation="Horizontal" Margin="3">
+                <TextBlock Text="{Binding SobaID}"/>
+            </StackPanel>
+        </DataTemplate>
+    </Window.Resources>
+    <Grid>
+        <TextBlock Text="Sifra" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,15,0,0"/>
+        <TextBox x:Name="txtSifra" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="120,10,0,0" Height="25" Width="70"/>
+        <TextBlock Text="Ime" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,50,0,0"/>
+        <TextBox x:Name="txtIme" HorizontalAlignment="Left" VerticalAlignment="Top" Height="25" Width="70" Margin="120,45,0,0"/>
+        <TextBlock Text="Prezime" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,85,0,0"/>
+        <TextBox x:Name="txtPrezime" HorizontalAlignment="Left" VerticalAlignment="Top" Height="25" Width="70" Margin="120,80,0,0"/>
+        <TextBlock Text="Priotet" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,120,0,0"/>
+        <Slider x:Name="SldPrior" Width="60" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="120,115,0,0" ValueChanged="SldPrior_ValueChanged" Minimum="0" Maximum="7"/>
+        <TextBox x:Name="txtPrt" Height="25" Width="25" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="200,115,0,0" IsEnabled="false"/>
+        <TextBlock Text="Odeljenje" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,155,0,0"/>
+        <ComboBox x:Name="cmbOdelj" Height="25" Width="105" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="120,150,0,0" ItemTemplate="{StaticResource odeljenjeKontrola}" SelectionChanged="CmbOdelj_SelectionChanged"/>
+        <TextBlock Text="Soba" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,190,0,0"/>
+        <ComboBox x:Name="cmbSoba" Height="25" Width="60" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="60,185,0,0" ItemTemplate="{StaticResource sobeKontrola}" SelectionChanged="CmbSoba_SelectionChanged"/>
+        <TextBlock Text="Sprat" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="135,190,0,0"/>
+        <TextBox x:Name="txtSoba" Height="25" Width="35" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="180,185,0,0"/>
+        <Button x:Name="btnUnesi" Content="Unesi" Width="70" Height="25" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="20,0,0,80" Click="BtnUnesi_Click"/>
+        <Button x:Name="btnOdustani" Content="Odustani" Width="70" Height="25" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="150,0,0,80" Click="Button_Click"/>
+    </Grid>
+</Window>

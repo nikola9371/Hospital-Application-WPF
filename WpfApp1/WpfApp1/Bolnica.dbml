@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Kolokvijum1" Class="BolnicaDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-43MREHR;Initial Catalog=Kolokvijum1;Integrated Security=True" SettingsObjectName="WpfApp1.Properties.Settings" SettingsPropertyName="Kolokvijum1ConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Odeljenje" Member="Odeljenjes">
+    <Type Name="Odeljenje">
+      <Column Name="OdeljenjeID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Naziv" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Association Name="Odeljenje_Pacijent" Member="Pacijents" ThisKey="OdeljenjeID" OtherKey="OdeljenjeID" Type="Pacijent" />
+      <Association Name="Odeljenje_Soba" Member="Sobas" ThisKey="OdeljenjeID" OtherKey="OdeljenjeID" Type="Soba" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Pacijent" Member="Pacijents">
+    <Type Name="Pacijent">
+      <Column Name="IDPacijent" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Ime" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Prezime" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Prioritet" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BrDana" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OdeljenjeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SobaID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Odeljenje_Pacijent" Member="Odeljenje" ThisKey="OdeljenjeID" OtherKey="OdeljenjeID" Type="Odeljenje" IsForeignKey="true" />
+      <Association Name="Soba_Pacijent" Member="Soba" ThisKey="SobaID" OtherKey="SobaID" Type="Soba" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Soba" Member="Sobas">
+    <Type Name="Soba">
+      <Column Name="SobaID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="OdeljenjeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Sprat" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Soba_Pacijent" Member="Pacijents" ThisKey="SobaID" OtherKey="SobaID" Type="Pacijent" />
+      <Association Name="Odeljenje_Soba" Member="Odeljenje" ThisKey="OdeljenjeID" OtherKey="OdeljenjeID" Type="Odeljenje" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
